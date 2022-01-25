@@ -1,0 +1,1970 @@
+/* ========================
+===== general style =======
+=========================== */
+:root {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+}
+a,
+img,
+span {
+  display: flex;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+p {
+  opacity: 0.7;
+}
+li {
+  cursor: pointer;
+}
+/* ====== space between section ===== */
+section {
+  margin: 20vh auto; /*space between sections*/
+  padding: 10vh 0;
+}
+/* ====== flex items ======= */
+nav,
+nav > ul li:last-child > div,
+header {
+  display: flex;
+  flex-direction: row;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ======== heading animations ======= */
+section h3 {
+  width: fit-content;
+  padding: 10px;
+  border: 2px solid rgb(29, 35, 39);
+  margin: 20px auto 80px;
+  position: relative;
+  transition-delay: 0.3s;
+  border-radius: 5px;
+}
+section h3:hover {
+  background-color: rgb(30, 144, 255);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+section h3::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(30, 144, 255);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+section h3:hover::before {
+  animation: hdrs 0.5s linear;
+  animation-fill-mode: forwards;
+}
+section h3::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(30, 144, 255);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+section h3:hover::after {
+  animation: hdrs2 0.5s linear;
+  animation-fill-mode: forwards;
+}
+@keyframes hdrs {
+  25% {
+    width: 15px;
+    height: 15px;
+    left: -20px;
+  }
+  50% {
+    width: 20px;
+    height: 20px;
+    left: -10px;
+  }
+  75% {
+    width: 25px;
+    height: 25px;
+    left: 0px;
+  }
+  100% {
+    left: 0px;
+    visibility: hidden;
+    z-index: -1;
+  }
+}
+
+@keyframes hdrs2 {
+  25% {
+    width: 15px;
+    height: 15px;
+    right: -20px;
+  }
+  50% {
+    width: 20px;
+    height: 20px;
+    right: -10px;
+  }
+  75% {
+    width: 25px;
+    height: 25px;
+    right: 0px;
+  }
+  100% {
+    right: 0px;
+    visibility: hidden;
+    z-index: -1;
+  }
+}
+/* ========================
+=========== nav ===========
+=========================== */
+nav {
+  width: 100%;
+  padding: 0 10vw;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 0 15px 0 rgb(192, 192, 192);
+  position: relative;
+  z-index: 1;
+}
+nav > ul > li {
+  display: inline-block;
+  position: relative;
+  padding: 1.3rem;
+}
+nav > ul > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: rgb(30, 144, 255);
+}
+nav > ul li:last-child:hover div {
+  visibility: visible;
+  bottom: -360px;
+}
+nav > ul > li:hover {
+  background-color: rgb(248, 248, 255);
+  color: rgb(30, 144, 255);
+}
+
+nav > ul > li:last-child > div {
+  position: absolute;
+  visibility: hidden;
+  left: -950px;
+  bottom: -380px;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  z-index: 1;
+  padding: 1.5rem;
+  justify-content: space-between;
+  border-bottom: 3px solid rgb(30, 144, 255);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+nav > ul > li:last-child > div li {
+  padding: 1rem;
+  color: rgb(30, 144, 255);
+  width: 200px;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  position: relative;
+}
+nav > ul > li:last-child > div li::before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  background-color: rgb(248, 248, 255);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+nav h1 {
+  color: rgb(30, 144, 255);
+}
+/* navigation bar animations */
+nav > ul > li:hover::before,
+nav > ul > li:last-child > div li:hover::before {
+  animation: ontop 0.2s linear;
+  animation-fill-mode: forwards;
+}
+@keyframes ontop {
+  25% {
+    width: 25%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 75%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ========================
+========== header =========
+=========================== */
+header {
+  align-items: flex-start;
+  height: 90vh;
+  justify-content: space-evenly;
+  background-color: rgb(235, 235, 241);
+  position: relative;
+  margin-bottom: 20vh;
+}
+header::after {
+  content: "";
+  position: absolute;
+  width: 103%;
+  transform-origin: top left;
+  bottom: -19vh;
+  height: 19vh;
+  transform: rotate(-5deg) translateX(-10px);
+  background-color: rgb(255, 255, 255);
+}
+header > img {
+  width: 45vw;
+  object-fit: contain;
+  position: relative;
+  animation: header-img 3s linear;
+  animation-iteration-count: infinite;
+}
+header > div {
+  width: 35vw;
+  font-size: 1.35rem;
+  line-height: 2.5rem;
+  align-self: center;
+}
+header div > i.fas {
+  position: absolute;
+  color: rgb(30, 144, 255);
+  left: 50%;
+  bottom: 80px;
+  animation: arrow 1.5s linear;
+  animation-iteration-count: infinite;
+}
+@keyframes arrow {
+  10% {
+    bottom: 100px;
+  }
+  20% {
+    bottom: 90px;
+  }
+  30% {
+    bottom: 80px;
+  }
+  40% {
+    bottom: 80px;
+  }
+  50% {
+    bottom: 100px;
+  }
+  60% {
+    bottom: 90px;
+  }
+  70% {
+    bottom: 80px;
+  }
+  100% {
+    bottom: 80px;
+  }
+}
+@keyframes header-img {
+  0% {
+    top: 0px;
+  }
+  25% {
+    top: 30px;
+  }
+  50% {
+    top: 0px;
+  }
+  75% {
+    top: -30px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+/* ========================
+========= articles ========
+=========================== */
+.articles > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+.cards {
+  width: 18vw;
+  box-shadow: 0 0 25px 0 rgb(220, 220, 220);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.cards:hover {
+  transform: translateY(-10px);
+}
+.cards > img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 5px 5px 0 0;
+}
+.cards > div:first-of-type {
+  margin: 15px;
+}
+.cards > div:first-of-type h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+.cards > div:last-of-type {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(160, 160, 160);
+}
+.cards > div:last-of-type a,
+.cards > div:last-of-type i.fas {
+  color: rgb(30, 144, 255);
+}
+.cards:hover > div:last-of-type i.fas {
+  position: relative;
+  animation: r-arrow 1s linear;
+  animation-iteration-count: infinite;
+}
+@keyframes r-arrow {
+  25% {
+    left: 3px;
+  }
+  50% {
+    left: 6px;
+  }
+  75% {
+    left: 9px;
+  }
+  100% {
+    left: 12px;
+  }
+}
+/* ========================
+========= gallery =========
+=========================== */
+.gallery {
+  background-color: rgb(235, 235, 241);
+  position: relative;
+}
+.gallery::before {
+  background: linear-gradient(-45deg, rgb(235, 235, 241) 16px, transparent 0),
+    linear-gradient(45deg, rgb(235, 235, 241) 16px, transparent 0);
+  background-position: left top;
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+  content: " ";
+  display: block;
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  width: 100%;
+  height: 32px;
+}
+.gallery > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+.gallery > div > img {
+  width: 25vw;
+  border: 15px solid #ffffff;
+  transition: all 0.2s;
+}
+.gallery > div > img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+/* ========================
+======== features =========
+=========================== */
+.features > div {
+  display: flex;
+  gap: 40px;
+  margin: auto;
+  justify-content: center;
+}
+.features > div > div {
+  width: 25vw;
+  position: relative;
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 2px rgb(192, 192, 192);
+  padding-bottom: 30px;
+}
+.features img {
+  width: 100%;
+  opacity: 0.6;
+  display: block;
+}
+.features h4::after {
+  content: "";
+  width: 25vw;
+  position: absolute;
+  top: -140px;
+  left: -10.7vw;
+  height: 140px;
+  background-color: rgb(255, 255, 255);
+  transform: skewY(-13deg);
+  transition: all 0.1s;
+}
+.features > div > div:hover h4::after {
+  transform: skewY(13deg);
+}
+.features > div > div:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 51.2%;
+  width: 100%;
+  background-color: rgb(220, 20, 60);
+}
+.features > div > div:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 51.2%;
+  width: 100%;
+  background-color: rgb(0, 255, 255);
+}
+.features > div > div:nth-of-type(3)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 51.2%;
+  width: 100%;
+  background-color: rgb(30, 144, 255);
+}
+.features h4 {
+  border-bottom: 5px solid;
+  padding-bottom: 15px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.features > div > div:nth-of-type(1) h4 {
+  border-color: rgb(220, 20, 60);
+}
+.features > div > div:nth-of-type(2) h4 {
+  border-color: rgb(0, 255, 255);
+}
+.features > div > div:nth-of-type(3) h4 {
+  border-color: rgb(30, 144, 255);
+}
+.features > div a {
+  border: 3px solid;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.features > div > div:nth-of-type(1) a {
+  border-color: rgb(220, 20, 60);
+  color: rgb(220, 20, 60);
+}
+.features > div > div:nth-of-type(2) a {
+  border-color: rgb(0, 255, 255);
+  color: rgb(0, 255, 255);
+}
+.features > div > div:nth-of-type(3) a {
+  border-color: rgb(30, 144, 255);
+  color: rgb(30, 144, 255);
+}
+.features > div > div:nth-of-type(1):hover a {
+  animation: filling1 0.1s linear forwards;
+}
+@keyframes filling1 {
+  20% {
+    color: #ffffff;
+    background-image: linear-gradient(
+      to right,
+      rgb(220, 20, 60) 0% 20%,
+      #ffffff 20% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(220, 20, 60) 0% 40%,
+      #ffffff 40% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(220, 20, 60) 0% 60%,
+      #ffffff 60% 100%
+    );
+  }
+  80% {
+    background-image: linear-gradient(
+      to right,
+      rgb(220, 20, 60) 0% 80%,
+      #ffffff 80% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(to right, rgb(220, 20, 60) 0% 100%);
+    color: #ffffff;
+  }
+}
+.features > div > div:nth-of-type(2):hover a {
+  animation: filling2 0.1s linear forwards;
+}
+@keyframes filling2 {
+  20% {
+    color: #ffffff;
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 255, 255) 0% 20%,
+      #ffffff 20% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 255, 255) 0% 40%,
+      #ffffff 40% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 255, 255) 0% 60%,
+      #ffffff 60% 100%
+    );
+  }
+  80% {
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 255, 255) 0% 80%,
+      #ffffff 80% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(to right, rgb(0, 255, 255) 0% 100%);
+    color: #ffffff;
+  }
+}
+.features > div > div:nth-of-type(3):hover a {
+  animation: filling3 0.1s linear forwards;
+}
+@keyframes filling3 {
+  20% {
+    color: #ffffff;
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      #ffffff 20% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      #ffffff 40% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      #ffffff 60% 100%
+    );
+  }
+  80% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 80%,
+      #ffffff 80% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(to right, rgb(30, 144, 255) 0% 100%);
+    color: #ffffff;
+  }
+}
+/* ========================
+======= testimonials ======
+=========================== */
+.testimonials {
+  background-color: rgb(235, 235, 241);
+}
+.testimonials > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+.testimonials > div > div {
+  width: 25vw;
+  background-color: rgb(255, 255, 255);
+  line-height: 2;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+.testimonials img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: 10px solid rgb(235, 235, 241);
+  border-radius: 50%;
+}
+.testimonials i.fa.checked {
+  color: gold;
+}
+/* ========================
+======= team members ======
+=========================== */
+.team > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  padding: 50px;
+}
+.team > div > div {
+  width: 22vw;
+  padding: 50px 15px;
+  background-color: rgb(235, 235, 241);
+  border-radius: 10px;
+  position: relative;
+}
+.team > div > div::after {
+  content: "";
+  width: 0;
+  height: 100%;
+  background-color: rgba(192, 192, 192, 0.3);
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  transition: 0.2s;
+}
+.team > div > div:hover:after {
+  width: 100%;
+}
+.team img {
+  width: 20vw;
+  border-radius: 10px;
+  float: left;
+  position: relative;
+  left: -3vw;
+  z-index: 2;
+}
+.team h4 {
+  margin: 10px 0;
+  color: rgb(30, 144, 255);
+}
+.team span {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 50px 0;
+  position: relative;
+  left: -1.5vw;
+  z-index: 2;
+}
+.team > div > div:hover :is(.team img, .team h4) {
+  filter: grayscale(1.5);
+}
+.team > div > div i.fab:hover {
+  color: rgb(30, 144, 255);
+}
+/* ========================
+========= services ========
+=========================== */
+.services::before {
+  content: "";
+  background: linear-gradient(-45deg, rgb(235, 235, 241) 16px, transparent 0),
+    linear-gradient(45deg, rgb(235, 235, 241) 16px, transparent 0);
+
+  background-repeat: repeat-x;
+  background-size: 32px 32px;
+  background-position: left top;
+  position: absolute;
+  top: -32px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 32px;
+}
+.services {
+  position: relative;
+  background-color: rgb(235, 235, 241);
+}
+.services > div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.services > div > div {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  height: 250px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20%;
+  box-shadow: 0 0 15px rgb(185, 185, 187);
+  position: relative;
+  transition: all 0.3s;
+}
+.services > div > div:hover {
+  transform: translateY(-8px);
+}
+.services > div > div::before {
+  content: "";
+  width: 0%;
+  height: 4px;
+  background-color: rgb(30, 144, 255);
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transition: all 0.3s;
+}
+.services > div > div:hover::before {
+  width: 100%;
+  left: 0;
+}
+.services i.fas {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+.services h4,
+.services a {
+  color: rgb(30, 144, 255);
+}
+.services h4 + div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding-right: 10px;
+}
+.services span {
+  width: 90px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: rgb(30, 144, 255);
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+.services span::after {
+  content: "";
+  width: 60px;
+  height: 100%;
+  background-color: rgb(235, 235, 241);
+  transform: skewx(-20deg);
+  position: absolute;
+  right: -50px;
+  top: 0;
+}
+/* ========================
+========= skills ==========
+=========================== */
+.skills > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.skills > div > div > div {
+  width: 40vw;
+  height: 30px;
+  margin: 50px 0;
+  position: relative;
+}
+.skills > div > div > div:nth-of-type(1).none,
+.skills > div > div > div:nth-of-type(2).none,
+.skills > div > div > div:nth-of-type(3).none,
+.skills > div > div > div:nth-of-type(4).none,
+.skills > div > div > div:nth-of-type(5).none {
+  animation: none;
+}
+
+.skills > div > div > div:nth-of-type(1) {
+  animation: scale1 0.2s linear forwards;
+}
+@keyframes scale1 {
+  10% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 10%,
+      rgb(235, 235, 241) 10% 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      rgb(235, 235, 241) 20% 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 30%,
+      rgb(235, 235, 241) 30% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      rgb(235, 235, 241) 40% 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      rgb(235, 235, 241) 60% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 80%,
+      rgb(235, 235, 241) 80% 100%
+    );
+  }
+}
+.skills > div > div > div:nth-of-type(1)::before {
+  content: "HTML";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+.skills > div > div > div:nth-of-type(1)::after {
+  content: "80%";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: rgb(30, 144, 255);
+  border: 1px solid rgb(30, 144, 255);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+.skills > div > div > div:nth-of-type(2) {
+  animation: scale2 0.2s linear forwards;
+}
+@keyframes scale2 {
+  10% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 10%,
+      rgb(235, 235, 241) 10% 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      rgb(235, 235, 241) 20% 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 30%,
+      rgb(235, 235, 241) 30% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      rgb(235, 235, 241) 40% 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      rgb(235, 235, 241) 60% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 85%,
+      rgb(235, 235, 241) 85% 100%
+    );
+  }
+}
+.skills > div > div > div:nth-of-type(2)::before {
+  content: "CSS";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+.skills > div > div > div:nth-of-type(2)::after {
+  content: "85%";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: rgb(30, 144, 255);
+  border: 1px solid rgb(30, 144, 255);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+.skills > div > div > div:nth-of-type(3) {
+  animation: scale3 0.2s linear forwards;
+}
+@keyframes scale3 {
+  10% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 10%,
+      rgb(235, 235, 241) 10% 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      rgb(235, 235, 241) 20% 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 30%,
+      rgb(235, 235, 241) 30% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      rgb(235, 235, 241) 40% 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      rgb(235, 235, 241) 60% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 70%,
+      rgb(235, 235, 241) 70% 100%
+    );
+  }
+}
+.skills > div > div > div:nth-of-type(3)::before {
+  content: "JavaScript";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+.skills > div > div > div:nth-of-type(3)::after {
+  content: "70%";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: rgb(30, 144, 255);
+  border: 1px solid rgb(30, 144, 255);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+.skills > div > div > div:nth-of-type(4) {
+  animation: scale4 0.2s linear forwards;
+}
+@keyframes scale4 {
+  10% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 10%,
+      rgb(235, 235, 241) 10% 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      rgb(235, 235, 241) 20% 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 30%,
+      rgb(235, 235, 241) 30% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      rgb(235, 235, 241) 40% 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      rgb(235, 235, 241) 60% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 80%,
+      rgb(235, 235, 241) 80% 100%
+    );
+  }
+}
+.skills > div > div > div:nth-of-type(4)::before {
+  content: "Python";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+.skills > div > div > div:nth-of-type(4)::after {
+  content: "80%";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: rgb(30, 144, 255);
+  border: 1px solid rgb(30, 144, 255);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+.skills > div > div > div:nth-of-type(5) {
+  animation: scale5 0.2s linear forwards;
+}
+@keyframes scale5 {
+  10% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 10%,
+      rgb(235, 235, 241) 10% 100%
+    );
+  }
+  20% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 20%,
+      rgb(235, 235, 241) 20% 100%
+    );
+  }
+  30% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 30%,
+      rgb(235, 235, 241) 30% 100%
+    );
+  }
+  40% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 40%,
+      rgb(235, 235, 241) 40% 100%
+    );
+  }
+  50% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  60% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 50%,
+      rgb(235, 235, 241) 50% 100%
+    );
+  }
+  70% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 60%,
+      rgb(235, 235, 241) 60% 100%
+    );
+  }
+  100% {
+    background-image: linear-gradient(
+      to right,
+      rgb(30, 144, 255) 0% 90%,
+      rgb(235, 235, 241) 90% 100%
+    );
+  }
+}
+.skills > div > div > div:nth-of-type(5)::before {
+  content: "PHP";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  left: 0;
+}
+.skills > div > div > div:nth-of-type(5)::after {
+  content: "90%";
+  font-weight: 700;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: rgb(30, 144, 255);
+  border: 1px solid rgb(30, 144, 255);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  padding: 2px 5px;
+}
+/* ========================
+====== How it works =======
+=========================== */
+.how {
+  background-color: rgb(235, 235, 241);
+}
+.how > div,
+.how > div > div > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.how > div > div > div img {
+  width: 50px;
+  object-fit: contain;
+}
+.how > div > div > div {
+  width: 40vw;
+  margin: 20px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 20px;
+  gap: 20px;
+  line-height: 2;
+  background-color: rgb(248, 248, 255);
+  position: relative;
+}
+.how > div > div > div::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(235, 235, 241, 0.5);
+  transition: all 0.5s;
+  z-index: 1;
+}
+.how > div > div > div:hover::before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.how > div > div img,
+.how > div img + div {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================
+========= events ==========
+=========================== */
+.events > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3vw;
+  align-items: center;
+  position: relative;
+}
+.events > div::after {
+  content: url("images/dots.png");
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.events > div::before {
+  content: url("images/dots.png");
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  z-index: -1;
+}
+.events img {
+  width: 35vw;
+}
+.events > div > div {
+  width: 50vw;
+  text-align: center;
+  font-size: 1.2rem;
+}
+.events h4 {
+  margin: 20px;
+}
+.events > div > div > div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+:is(#days, #hours, #minutes, #seconds) p {
+  font-size: 0.9rem;
+  border-top: 1px solid rgb(192, 192, 192);
+  margin-top: 5px;
+}
+#days,
+#hours,
+#minutes,
+#seconds {
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 5px;
+  width: 70px;
+}
+.events span {
+  color: rgb(30, 144, 255);
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.events form {
+  background-color: rgb(235, 235, 241);
+  width: 40vw;
+  margin: auto;
+  padding: 30px;
+  border-radius: 50px;
+}
+.events form input[type="email"] {
+  width: 70%;
+  height: 50px;
+  border: unset;
+  border-radius: 25px;
+  padding-left: 10px;
+}
+.events form input[type="submit"] {
+  width: 25%;
+  height: 50px;
+  border-radius: 25px;
+  border: unset;
+  background-color: rgb(30, 144, 255);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+}
+/* ========================
+========= pricing =========
+=========================== */
+.pricing {
+  background-color: rgb(235, 235, 241);
+}
+.pricing > div {
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+}
+.pricing > div img {
+  width: 4rem;
+}
+.pricing > div > div {
+  width: 25vw;
+  background-color: rgb(255, 255, 255);
+  gap: 30px;
+  padding: 30px 0;
+  align-items: center;
+  box-shadow: 0 0 15px rgb(192, 192, 192);
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+.pricing span:first-of-type {
+  font-size: 3rem;
+  color: rgb(30, 144, 255);
+  font-weight: 700;
+}
+.pricing ul {
+  align-self: stretch;
+}
+.pricing li {
+  padding: 20px 10px;
+  border-top: 1px solid rgb(235, 235, 241);
+}
+.pricing i.fas {
+  color: rgb(30, 144, 255);
+  margin: 5px;
+}
+.pricing a {
+  color: rgb(30, 144, 255);
+  border: 2px solid rgb(30, 144, 255);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.pricing span:nth-of-type(2) {
+  font-weight: 500;
+  color: white;
+  background-color: rgb(30, 144, 255);
+  width: 150px;
+  padding: 5px;
+  position: absolute;
+  transform: rotate(90deg);
+  top: 57px;
+  right: -20px;
+}
+.pricing > div > div:nth-of-type(2) {
+  transform: translateY(-20px);
+}
+.pricing span:nth-of-type(2)::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 17px;
+  border-style: solid;
+  border-color: transparent rgb(255, 255, 255) transparent transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.pricing > div > div::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 0;
+  background-color: rgb(248, 248, 255);
+  right: 0;
+  top: 0;
+  transition: all 0.3s linear;
+  z-index: 1;
+}
+.pricing > div > div:hover::after {
+  width: 100%;
+}
+.pricing > div > div::before {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 0;
+  background-color: rgb(248, 248, 255);
+  left: 0;
+  top: 50%;
+  transition: all 0.3s linear;
+  z-index: 1;
+}
+.pricing > div > div:hover::before {
+  width: 100%;
+}
+.pricing > div > div :is(h4, img, span, p, ul, a) {
+  position: relative;
+  z-index: 2;
+}
+.pricing > div::after {
+  content: url("images/dots.png");
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+.pricing > div::before {
+  content: url("images/dots.png");
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+/* ========================
+======== top videos =======
+=========================== */
+.top > div {
+  width: 80vw;
+  margin: auto;
+  border: 1px solid rgb(192, 192, 192);
+  font-size: 0.9em;
+}
+.top > div > div > div {
+  padding: 15px;
+  width: 22vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgb(192, 192, 192);
+}
+.top > div > div > div:hover {
+  background-color: rgb(248, 248, 255);
+  cursor: pointer;
+}
+.top > div > div > div:hover p {
+  color: rgb(0, 87, 173);
+}
+.top h4 {
+  padding: 15px;
+  width: 22vw;
+  background-color: rgb(235, 235, 241);
+  position: relative;
+}
+.top h4 i.fas {
+  position: absolute;
+  right: 15px;
+  top: 20px;
+}
+.top > div > div img {
+  width: 100%;
+}
+.top .flex-column {
+  padding: 10px;
+  justify-content: space-between;
+  background-color: rgb(220, 220, 220);
+  border-left: 1px solid rgb(192, 192, 192);
+}
+.top .flex-column p {
+  width: 100%;
+  opacity: unset;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+/* ========================
+========= awesome =========
+=========================== */
+.awesome {
+  position: relative;
+  font-size: 1.5em;
+}
+.awesome img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75vh;
+  object-fit: cover;
+  opacity: 0.1;
+  z-index: -1;
+}
+.awesome h2 {
+  width: fit-content;
+  margin: 0 auto 50px;
+}
+.awesome .flex-row {
+  justify-content: center;
+  gap: 20px;
+}
+.awesome .flex-row > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  width: 18vw;
+  gap: 10px;
+  font-weight: bold;
+}
+.awesome span {
+  color: rgb(30, 144, 255);
+}
+
+/* ========================
+========= discount ========
+=========================== */
+.discount {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.discount > div:first-of-type {
+  background-color: rgb(30, 144, 255);
+  justify-content: center;
+  padding: 5vw;
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+.discount > div:first-of-type img:first-of-type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.03;
+  width: 100%;
+  height: 100%;
+}
+.discount > div:first-of-type img:last-of-type {
+  width: 300px;
+}
+.discount > div:nth-of-type(2) {
+  padding: 5vw;
+}
+.discount .flex-column {
+  align-items: center;
+  gap: 30px;
+  font-size: 1.2em;
+}
+.discount .flex-column :is(input:not([type="submit"]), textarea) {
+  width: 280px;
+  padding: 15px;
+  border: unset;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  background-color: rgb(248, 248, 255);
+}
+
+.discount .flex-column :is(input:not([type="submit"]), textarea):focus {
+  outline: unset;
+}
+.discount .flex-column textarea {
+  height: 150px;
+}
+.discount .flex-column input[type="submit"] {
+  width: 280px;
+  padding: 15px;
+  border: unset;
+  background-color: rgb(30, 144, 255);
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 0 15px 0 rgb(192, 192, 192);
+}
+/* ========================
+========== footer =========
+=========================== */
+footer :is(div, ul) {
+  width: 250px;
+  gap: 20px;
+}
+footer h1 {
+  font-size: 2em;
+}
+footer {
+  gap: 30px;
+  background-color: rgb(29, 35, 39);
+  color: rgb(255, 255, 255);
+  justify-content: center;
+  padding: 50px 0;
+  line-height: 2;
+  flex-wrap: wrap;
+  position: relative;
+}
+footer > div i.fab {
+  margin-right: 5px;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(58, 65, 70);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+}
+footer > div i.fab:nth-of-type(1):hover {
+  cursor: pointer;
+  background-color: rgb(71, 107, 207);
+}
+footer > div i.fab:nth-of-type(2):hover {
+  cursor: pointer;
+  background-color: rgb(30, 144, 255);
+}
+footer > div i.fab:nth-of-type(3):hover {
+  cursor: pointer;
+  background-color: rgb(243, 68, 38);
+}
+footer ul {
+  display: flex;
+  flex-direction: column;
+}
+footer ul li {
+  transition: all 0.3s;
+}
+footer ul li:hover {
+  transform: translateX(15px);
+}
+footer a {
+  display: inline;
+  color: rgb(255, 255, 255);
+}
+footer i.fas {
+  color: rgb(30, 144, 255);
+  margin-right: 5px;
+}
+footer > div:last-of-type {
+  width: 330px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+footer > div:last-of-type img {
+  width: 100px;
+  border: 5px solid rgb(255, 255, 255);
+  height: 100px;
+}
+footer > p {
+  position: absolute;
+  bottom: 0;
+}
+footer > p a {
+  color: rgb(30, 144, 255);
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* ========================
+====== medium screen ======
+=========================== */
+@media all and (max-width: 750px) {
+  nav {
+    padding: 0 5vw;
+  }
+  nav > ul > li:last-child > div {
+    left: -430px;
+    bottom: -555px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 75vw;
+  }
+  nav > ul li:last-child:hover div {
+    bottom: -535px;
+  }
+  nav > ul > li:last-child > div img {
+    width: 350px;
+    object-fit: contain;
+  }
+  header > div {
+    align-self: unset;
+  }
+  header {
+    align-items: center;
+  }
+  .cards {
+    width: 40vw;
+  }
+  .gallery > div > img {
+    width: 40vw;
+  }
+  .features > div {
+    flex-wrap: wrap;
+  }
+  .features > div > div {
+    width: 40vw;
+  }
+  .features h4::after {
+    width: 40vw;
+    left: -125px;
+    top: -10.5vw;
+  }
+  .testimonials > div > div {
+    width: 33vw;
+  }
+  .team > div > div {
+    width: 33vw;
+  }
+  .team img {
+    width: 28vw;
+  }
+  .services > div > div {
+    width: 40vw;
+  }
+  .skills img {
+    width: 40vw;
+    object-fit: contain;
+    min-width: 300px;
+  }
+  .how > div > img {
+    width: 40vw;
+    object-fit: contain;
+  }
+  .events img {
+    width: 60vw;
+  }
+  .events form {
+    width: 70vw;
+  }
+  .events > div {
+    flex-direction: column;
+  }
+  .pricing > div > div {
+    width: 40vw;
+  }
+  .pricing > div {
+    flex-wrap: wrap;
+  }
+  .pricing > div > div:nth-of-type(2) {
+    transform: unset;
+  }
+  .top > div {
+    width: 95vw;
+  }
+  .top > div > div > div {
+    padding: 5px;
+    gap: 5px;
+  }
+  .awesome .flex-row {
+    flex-wrap: wrap;
+  }
+  .awesome .flex-row > div {
+    min-width: 200px;
+  }
+  .awesome img {
+    height: 90vh;
+  }
+  .discount {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+/* ========================
+====== mobile device ======
+=========================== */
+@media all and (max-width: 375px) {
+  :root {
+    min-width: 375px;
+  }
+  nav {
+    padding: 0 5px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav > ul > li {
+    padding: 0.6rem;
+    width: 80px;
+  }
+  nav > ul > li:last-child {
+    width: 110px;
+  }
+  nav > ul > li:last-child > div {
+    left: -130px;
+    bottom: -560px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 60vw;
+  }
+  nav > ul li:last-child:hover div {
+    bottom: -540px;
+  }
+  nav > ul > li:last-child > div img {
+    display: none;
+  }
+  nav > ul > li:last-child > div li {
+    padding: 0.8rem;
+  }
+  header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  header > div {
+    width: 90vw;
+    text-align: center;
+    margin: 10px;
+  }
+  header > img {
+    width: 70vw;
+  }
+  .cards,
+  .gallery > div > img {
+    width: 280px;
+  }
+  .features > div > div {
+    width: 300px;
+  }
+  .features h4 {
+    margin-top: 30px;
+  }
+  .features h4::after {
+    width: 300px;
+    left: -125px;
+    top: -106px;
+    height: 105px;
+  }
+  .testimonials > div > div {
+    width: 80vw;
+    min-width: 280px;
+  }
+  .team > div > div {
+    width: 250px;
+  }
+  .team img {
+    width: 220px;
+  }
+  .services > div > div {
+    width: 300px;
+  }
+  .skills > div {
+    flex-direction: column;
+  }
+  .skills > div > div > div {
+    width: 300px;
+  }
+  .how > div > img {
+    min-width: 300px;
+  }
+  .how > div {
+    flex-direction: column;
+  }
+  .how > div > div > div {
+    width: 300px;
+  }
+  .events img {
+    width: 300px;
+  }
+  .events form {
+    width: 350px;
+    padding: 10px;
+  }
+  .events img,
+  .events > div > div {
+    width: 300px;
+  }
+  .events > div::before {
+    bottom: -200px;
+  }
+  .events > div::after {
+    top: -350px;
+  }
+  .pricing > div > div {
+    width: 80vw;
+  }
+  .pricing > div {
+    flex-wrap: wrap;
+  }
+  .top .flex-row {
+    flex-direction: column-reverse;
+    width: 320px;
+  }
+  .top .flex-row > div > div,
+  .top h4 {
+    width: 100%;
+  }
+  .awesome img {
+    height: 180vh;
+  }
+}
